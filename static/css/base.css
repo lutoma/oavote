@@ -1,0 +1,80 @@
+body {
+	background: url(../img/main_bg.png);
+	
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.6;
+	color: #242424;
+
+	margin: 0;
+	padding: 0;
+	text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Viga', sans-serif;
+	font-weight: 400;
+}
+
+a {
+	color: #DE2355;
+	text-decoration: none;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+body > header {
+	max-width: 750px;
+	margin: 0 auto;
+	margin-bottom: 70px;
+	margin-top: 30px;
+	padding: 0;
+}
+
+body > header > img {
+	float: left;
+	margin-right: 10px;
+	width: 120px;
+}
+
+body > header > span > h1 {
+	font-family: 'Source Sans Pro', sans-serif;
+	padding-top: 18px;
+	font-size: 40px;
+	font-weight: 700;
+	margin: 0;
+	line-height: 1;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 1px #fbfbfb;
+}
+
+body > header > span > h2 {
+	font-family: 'Source Sans Pro', sans-serif;
+	padding-top: 3px;
+	margin: 0;
+	font-size: 30px;
+	font-weight: 200;
+	font-style: italic;
+	line-height: 1;
+}
+
+#main-wrapper {
+	max-width: 750px;
+	margin: 0 auto;
+	margin-bottom: 70px;
+	background: #fff;
+	min-height: 400px;
+	padding: 10px 50px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.102);
+	border-radius: 2px;
+}

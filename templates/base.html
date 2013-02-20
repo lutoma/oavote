@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>{% block header_title %}{% trans 'Poll' %}{% endblock %}</title>
+
+		<link rel='stylesheet' href='{% static "css/base.css" %}' />
+	</head>
+
+	<body>
+		<header>
+			<img src='{% static "img/signet.svg" %}' alt='Signet' />
+			<span>
+				<h1>Junge Piraten</h1>
+				<h2>Onlineabstimmung</h2>
+			</span>
+		</header>
+
+		<div id='main-wrapper'>
+			{% block content %}
+				{% trans 'No content to show' %}
+			{% endblock %}
+		</div>
+	</body>
+</html>
