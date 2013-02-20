@@ -1,0 +1,15 @@
+Hey {{ user.first_name }},
+
+we're contacting you to let you know that the {{ user.poll.title }} poll is now open for voting!
+
+You can cast your vote at the following URL:
+https://example.org/{{ user.token }}
+
+DO NOT SHARE THIS URL WITH ANYONE, as this would allow them to cast and/or modify your vote.
+
+If you have any questions, feel free to contact us at team@example.org
+
+Your Example.org team
+
+-- 
+You're receiving this mail because [insert reason here]. If you do not wish to receive these emails anymore, [thing to do].

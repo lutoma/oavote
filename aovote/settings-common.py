@@ -24,7 +24,8 @@ INSTALLED_APPS = (
 	'south',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
-	'vote'
+	'vote',
+	'votemail'
 )
 
 MIDDLEWARE_CLASSES = (
