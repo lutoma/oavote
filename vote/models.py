@@ -84,6 +84,10 @@ class PollQuestion(models.Model):
 
 		# TODO Check if there's a more efficient way to do this
 		list = PollQuestion.objects.filter(id__gt = self.id, poll = self.poll)
+		
+		# This should be the default, but just to be absolutely certain
+		list.order_by('id')
+
 		if len(list) < 1:
 			return None
 
