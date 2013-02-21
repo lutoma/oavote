@@ -76,6 +76,19 @@ class PollQuestion(models.Model):
 	def __unicode__(self):
 		return self.title
 
+	def next(self):
+		"""
+		Returns the next question in this Poll. This is not necessarily
+		self.id += 1 since the IDs are shared across Polls.
+		"""
+
+		# TODO Check if there's a more efficient way to do this
+		list = PollQuestion.objects.filter(id__gt = self.id, poll = self.poll)
+		if len(list) < 1:
+			return None
+
+		return list[0]
+
 class Vote(models.Model):
 	"""
 	The user votes to a question. The choice is stored as an Integerfield. The
