@@ -84,7 +84,7 @@ class PollQuestion(models.Model):
 
 		# TODO Check if there's a more efficient way to do this
 		list = PollQuestion.objects.filter(id__gt = self.id, poll = self.poll)
-		list.order_by('id')
+		list = list.order_by('id')
 
 		if len(list) < 1:
 			return None
@@ -99,7 +99,7 @@ class PollQuestion(models.Model):
 
 		# TODO Check if there's a more efficient way to do this
 		list = PollQuestion.objects.filter(id__lt = self.id, poll = self.poll)
-		list.order_by('-id')
+		list = list.order_by('-id')
 
 		if len(list) < 1:
 			return None
