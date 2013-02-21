@@ -84,9 +84,22 @@ class PollQuestion(models.Model):
 
 		# TODO Check if there's a more efficient way to do this
 		list = PollQuestion.objects.filter(id__gt = self.id, poll = self.poll)
-		
-		# This should be the default, but just to be absolutely certain
 		list.order_by('id')
+
+		if len(list) < 1:
+			return None
+
+		return list[0]
+
+	def previous(self):
+		"""
+		Returns the previous question in this Poll. This is not necessarily
+		self.id -= 1 since the IDs are shared across Polls.
+		"""
+
+		# TODO Check if there's a more efficient way to do this
+		list = PollQuestion.objects.filter(id__lt = self.id, poll = self.poll)
+		list.order_by('-id')
 
 		if len(list) < 1:
 			return None
