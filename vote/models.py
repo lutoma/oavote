@@ -113,7 +113,7 @@ class Vote(models.Model):
 	1 = no, 2 = abstention.
 	"""
 
-	voting_user = models.OneToOneField(User, verbose_name = _('Voting user'))
+	voting_user = models.ForeignKey(User, verbose_name = _('Voting user'))
 
 	poll_question = models.ForeignKey(
 		PollQuestion,
