@@ -5,14 +5,32 @@
 <html>
 	<head>
 		<meta charset='utf-8' />
+		<meta name="viewport" content="width=device-width" />
+
 		<title>{% block header_title %}{% trans 'Poll' %}{% endblock %}</title>
 
 		<link rel='stylesheet' href='{% static "css/base.css" %}' />
+
+		<!--[if lt IE 9]>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<script src="{% static 'js/ie-lt9-html5.js' %}"></script>
+		<![endif]-->
+
+		<!--[if lt IE 8]>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<script src="{% static 'js/ie-lt8-pngfix.js' %}"></script>
+		<![endif]-->
 	</head>
 
 	<body>
 		<header>
-			<img src='{% static "img/signet.svg" %}' alt='Signet' />
+			<!--[if lt IE 9]>
+				<img src='{% static "img/signet.png" %}' alt='Signet' />
+			<![endif]-->
+			<![if !lt IE 9]>
+				<img src='{% static "img/signet.svg" %}' alt='Signet' />
+			<![endif]>
+
 			<span>
 				<h1>Junge Piraten</h1>
 				<h2>Onlineabstimmung</h2>
