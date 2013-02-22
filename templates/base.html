@@ -20,9 +20,22 @@
 		</header>
 
 		<div id='main-wrapper'>
-			{% block content %}
-				{% trans 'No content to show' %}
-			{% endblock %}
+			<div id='wrapper-inside'>
+				{% block content %}
+					{% trans 'No content to show' %}
+				{% endblock %}
+			</div>
+			<br class='clear' /> <!-- HTML fuck yeah -->
+			
+			{% block content-outside %}	{% endblock %}
 		</div>
+
+		<footer id='main-footer'>
+			<ul>
+				<li><a href="/">Fragen oder Bedenken zur Umsetzung, Sicherheit oder zum Datenschutz?</a></li>
+				<li><a href="/">Datenschutzerklärung</a></li>
+				<li><a href="/">Impressum</a></li>
+			<ul>
+		</footer>
 	</body>
 </html>

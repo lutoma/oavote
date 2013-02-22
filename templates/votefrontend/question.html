@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block header_title %}
+	Antrag: {{ question.title }}
+{% endblock %}
+
+{% block content %}
+	<p>
+		{% if question.previous %}
+			<a href='{% url show_question question_id=question.previous.id %}'>« Vorheriger Antrag</a>
+		{% endif %}
+
+		{% if question.next %}
+			<a href='{% url show_question question_id=question.next.id %}' class='pull-right'>Nächster Antrag »</a>
+		{% endif %}
+
+		<br class='clear' />
+	</p>
+
+	{% if vote %}
+		<p>
+			<b>Hinweis</b>: 
+			{% if vote.choice == 0 %}
+				Du hast bereits <i>für</i> diesen Antrag gestimmt.
+			{% elif vote.choice == 1 %}
+				Du hast bereits <i>gegen</i> diesen Antrag gestimmt.
+			{% elif vote.choice == 2 %}
+				Du hast bereits über diesen Antrag abgestimmt und dich dabei <i>enthalten</i>.
+			{% endif %}
+
+			Du kannst deine Stimme aber natürlich ganz normal unten ändern – In diesem Falle wird deine alte Stimmabgabe überschrieben.
+
+			<hr />
+		</p>
+	{% endif %}
+
+	<h1>Antrag: {{ question.title }}</h1>
+	<article>
+		<b>Antragsteller*innen: {{ question.authors }}</b>
+
+		{{ question.text|safe|linebreaks }}
+
+		<hr />
+
+		<form action='{% url submit_vote question_id=question.id %}' method='POST'>
+			{% csrf_token %}
+
+			<div class='choice yes'>
+				<input type='radio' name='vote' id="yes" value='yes'>
+				<label for='yes'>Dafür</label>
+			</div>
+
+			<div class='choice no'>
+				<input type='radio' name='vote' id="no" value='no'>
+				<label for='no'>Dagegen</label>
+			</div>
+
+			<div class='choice abstention'>
+				<input type='radio' name='vote' id='abstention' value='abstention'>
+				<label for='abstention'>Enthaltung</label>
+			</div>
+
+			{% if not question.next %}
+				<p>Dieser Antrag ist der letzte in dieser Abstimmung. Daher wird dich ein Klick auf »Abstimmen« aus dem System abmelden und deine Stimmabgabe beenden. Du kannst deine Stimmen aber auch danach noch jederzeit bis zum Ende der Abstimmung wieder ändern, indem du dich mit dem Link in der Mail, die du bekommen hast, wieder anmeldest.</p>
+			{% endif %}
+
+			<button type='submit'>Abstimmen</button>
+		</form>
+	</article>
+{% endblock %}

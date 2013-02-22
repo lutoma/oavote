@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h1>Willkommen, Lukas</h1>
+	<h1>Willkommen, {{ token_user.first_name }}</h1>
 
 	<p>Hallo im Abstimmungssystem der Jungen Piraten! Wenn Du zum ersten mal hier bist, solltest Du dir ein paar Sekunden Zeit nehmen, die folgenden Informationen durchzulesen. Ansonsten kannst du einfach fortfahren.</p>
 
 	<h2>Wichtiger Punkt</h2>
 
-	<p>Bla bla bla Lorem ipsum dolor sit amet, consectutor adipiscing elit. Bitte beachte, dass wir seit dem derpsten herpsten alle am rumderpen sind.</p>
+	<p>Northern Equestria's <a href="">Crystal Empire</a> has once again made an appearance after being afflicted with a curse that made it vanish for 1,000 years, and Princess Celestia commissions Twilight Sparkle to keep the empire from disappearing again.</p>
 
-	<a href="derp">Weiter</a>
+	<hr />
+
+	<p>Twilight Sparkle accidentally casts a spell that switches the Cutie Marks and destinies of all her friends, and the only way she can reverse the spell is by writing her own magic.  Little does she know that by achieving this great accomplishment, she will fulfill her destiny and emerge a princess.</p>
+
+	<a href='{% url show_question question_id=question.id %}' class='button pull-right'>Weiter</a>
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header_title %}
+	Geschafft! – Stimmen erfolgreich gespeichert
+{% endblock %}
+
+{% block content %}
+	<h1>Geschafft!</h1>
+
+	<p>{{ token_user.first_name }}, vielen Dank für Deine Teilnahme an der Abstimmung!</p>
+
+	<hr />
+
+	<p>
+		Deine Stimmen wurden abgespeichert und werden in den Resultaten als
+		<blockquote>»{{ token_user.first_name }} / Mitglied #{{ token_user.member_id }}«</blockquote>
+		erscheinen. Ich habe dir ausserdem eine Mail geschickt, die alle deine Stimmen enthält, damit du noch einmal alles überprüfen kannst.
+	</p>
+
+	<p>
+		Sollte sich deine Meinung zu einem Thema ändern oder solltest du dich verklickt haben, kannst du deine Stimmen noch bis zum Ende der Abstimmung ändern. Benutze dazu einfach den Link, den du in der ursprünglichen Mail bekommen hast.
+	</p>
+
+	<hr />
+
+	<p>
+		Solltest du nicht vorhaben, deine Stimmen noch einmal zu ändern, kannst du dein Token <i>sperren</i>. Das sorgt für zusätzliche Sicherheit, weil dann selbst jemand, der Zugriff auf dein Mailpostfach erlangt mit dem Token nichts mehr anfangen kann – Danach ist eine Stimmabgabe oder eine Änderung der Stimmabgabe mit diesem Token allerdings nicht mehr möglich. <i>Bitte beachte, dass es nicht möglich ist das Token wieder zu entsperren, sobald es einmal gesperrt wurde.</i>
+	</p>
+
+	<p><a href="/">Ja, ich bin mir sicher und habe die Warnung gelesen. Sperre mein Token.</a></p>
+{% endblock %}
