@@ -91,11 +91,16 @@ def submit_vote(request, question_id):
 		poll = user.poll,
 		id = question_id)
 
+	next_question = question.next()
 	valid_choices = {'yes': 0, 'no': 1, 'abstention': 2}
 
-	# Check if the vote key exists and contains a valid value
+	# Check if the vote key exists and contains a valid value. Otherwise,
+	# redirect to next question
 	if not 'vote' in request.POST or not request.POST['vote'] in valid_choices:
-		return HttpResponseRedirect(reverse('show_question', kwargs = {'question_id': question.id}))
+		if next_question == None:
+			return HttpResponseRedirect(reverse('thanks'))
+			
+		return HttpResponseRedirect(reverse('show_question', kwargs = {'question_id': next_question.id}))
 
 	# Check if user already voted on this. If not, create new Vote object
 	try:
@@ -106,8 +111,6 @@ def submit_vote(request, question_id):
 	vote.choice = valid_choices[request.POST['vote']]
 	vote.save()
 
-	next_question = question.next()
-	
 	if next_question == None:
 		return HttpResponseRedirect(reverse('thanks'))
 
