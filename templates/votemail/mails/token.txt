@@ -1,15 +1,23 @@
-Hey {{ user.first_name }},
+Hallo {{ user.first_name }},
 
-we're contacting you to let you know that the {{ user.poll.title }} poll is now open for voting!
+wir melden uns bei dir, weil du ab sofort über die Anträge der {{ user.poll.title }} abstimmen kannst!
 
-You can cast your vote at the following URL:
-https://example.org/{{ user.token }}
+Du kannst deine Stimmen unter folgendem Link abgeben:
+https://oa.junge-piraten.de/vote/ident/{{ user.token }}/
 
-DO NOT SHARE THIS URL WITH ANYONE, as this would allow them to cast and/or modify your vote.
+TEILE DIESE URL NIEMANDEM MIT. Wir werden dich auch niemals nach dieser URL fragen.
 
-If you have any questions, feel free to contact us at team@example.org
+Falls du Fragen hast oder du dir nicht sicher bist wie du deine Stimme abgeben kannst, wende ich an kontakt@junge-piraten.de.
 
-Your Example.org team
+Viele Grüße,
+Lukas
+
+für die Jungen Piraten
 
 -- 
-You're receiving this mail because [insert reason here]. If you do not wish to receive these emails anymore, [thing to do].
+Diese Mail wurde für Mitglied #{{ user.member_id }} der Jungen Piraten generiert.
+
+Junge Piraten e.V.
+Eingetragen im Vereinsregister beim Amtsgericht Berlin Charlottenburg, VR 30966B
+
+Der Verein wird durch Florian Zumkeller-Quast (Vorsitzender), Paul Meyer-Dunker, Claudia Jonda (Stellvertretende Vorsitzende) und Patrick Rauscher (Schatzmeister) vertreten, weitere Mitglieder des Vorstandes: Sören Siegismund-Poschmann, Lukas Martini, Chiara Tummeley.
