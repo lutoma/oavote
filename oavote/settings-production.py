@@ -31,3 +31,5 @@ STATIC_URL = '/static/'
 
 with file('/etc/oavote-secret') as key_file:
     SECRET_KEY = key_file.read()
+
+ALLOWED_HOSTS = ['.junge-piraten.de', '127.0.0.1', '::1']
