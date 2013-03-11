@@ -42,3 +42,6 @@ CACHES = {
 }
 
 KEY_PREFIX = 'oavote'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mx'
