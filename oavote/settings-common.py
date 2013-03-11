@@ -10,8 +10,8 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-ROOT_URLCONF = 'aovote.urls'
-WSGI_APPLICATION = 'aovote.wsgi.application'
+ROOT_URLCONF = 'oavote.urls'
+WSGI_APPLICATION = 'oavote.wsgi.application'
 
 INSTALLED_APPS = (
 	'django.contrib.auth',

@@ -2,7 +2,7 @@
 # Development settings
 
 # import intentionally not used here
-execfile('aovote/settings-common.py')
+execfile('oavote/settings-common.py')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -25,9 +25,9 @@ DATABASES = {
 	}
 }
 
-MEDIA_ROOT = '/tmp/aovote-asset/'
+MEDIA_ROOT = '/tmp/oavote-asset/'
 MEDIA_URL = '/asset/'
-STATIC_ROOT = '/tmp/aovote-static/'
+STATIC_ROOT = '/tmp/oavote-static/'
 STATIC_URL = '/static/'
 SECRET_KEY = ')%39c_8s*r)&amp;gmxa%nrpvc9-w_=azvyt)%27a^c%t*13ob1%=!'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 """
-The URL parts after /vote/. For the rest, see aovote/urls.py
+The URL parts after /vote/. For the rest, see oavote/urls.py
 """
 
 urlpatterns = patterns('',
