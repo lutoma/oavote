@@ -26,7 +26,8 @@ INSTALLED_APPS = (
 	'django.contrib.admindocs',
 	'vote',
 	'votemail',
-	'votefrontend'
+	'votefrontend',
+	'votestatic'
 )
 
 MIDDLEWARE_CLASSES = (
