@@ -6,3 +6,6 @@ south
 
 # For the admin documentation
 docutils
+
+# Caching in production
+python-memcached
