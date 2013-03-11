@@ -33,3 +33,12 @@ with file('/etc/oavote-secret') as key_file:
     SECRET_KEY = key_file.read()
 
 ALLOWED_HOSTS = ['.junge-piraten.de', '127.0.0.1', '::1']
+
+CACHES = {
+	'default': {
+		'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+		'LOCATION': 'storage:11211',
+	}
+}
+
+KEY_PREFIX = 'oavote'
