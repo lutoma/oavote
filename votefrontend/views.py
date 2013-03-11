@@ -95,7 +95,7 @@ def submit_vote(request, question_id):
 
 	# Check if the vote key exists and contains a valid value
 	if not 'vote' in request.POST or not request.POST['vote'] in valid_choices:
-		HttpResponseRedirect(reverse('show_question', kwargs = {'question_id': question.id}))
+		return HttpResponseRedirect(reverse('show_question', kwargs = {'question_id': question.id}))
 
 	# Check if user already voted on this. If not, create new Vote object
 	try:
