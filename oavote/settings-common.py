@@ -6,6 +6,11 @@ import os
 SITE_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'de-de'
+LANGUAGES = (
+	('en', 'English'),
+	('de', 'Deutsch'),
+)
+
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
