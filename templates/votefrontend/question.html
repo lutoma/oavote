@@ -7,11 +7,11 @@
 {% block content %}
 	<p>
 		{% if question.previous %}
-			<a href='{% url show_question question_id=question.previous.id %}'>« Vorheriger Antrag</a>
+			<a href='{% url "show_question" question_id=question.previous.id %}'>« Vorheriger Antrag</a>
 		{% endif %}
 
 		{% if question.next %}
-			<a href='{% url show_question question_id=question.next.id %}' class='pull-right'>Nächster Antrag »</a>
+			<a href='{% url "show_question" question_id=question.next.id %}' class='pull-right'>Nächster Antrag »</a>
 		{% endif %}
 
 		<br class='clear' />
@@ -42,7 +42,7 @@
 
 		<hr />
 
-		<form action='{% url submit_vote question_id=question.id %}' method='POST'>
+		<form action='{% url "submit_vote" question_id=question.id %}' method='POST'>
 			{% csrf_token %}
 
 			<div class='choice yes'>
