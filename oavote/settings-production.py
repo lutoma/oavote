@@ -45,5 +45,7 @@ KEY_PREFIX = 'oavote'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mx'
+DEFAULT_FROM_EMAIL = 'oa@junge-piraten.de'
+EMAIL_SUBJECT_PREFIX = '[Junge Piraten] '
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
