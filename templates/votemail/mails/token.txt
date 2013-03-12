@@ -5,14 +5,12 @@ wir melden uns bei dir, weil du ab sofort über die Anträge der {{ user.poll.ti
 Du kannst deine Stimmen unter folgendem Link abgeben:
 https://oa.junge-piraten.de/vote/ident/{{ user.token }}/
 
-TEILE DIESE URL NIEMANDEM MIT. Wir werden dich auch niemals nach dieser URL fragen.
+Teile diese URL niemand mit – Wer diese hat, kann sich als Du ausgeben und deine Stimmen manipulieren.
 
 Falls du Fragen hast oder du dir nicht sicher bist wie du deine Stimme abgeben kannst, wende ich an kontakt@junge-piraten.de.
 
 Viele Grüße,
-Lukas
-
-für die Jungen Piraten
+Lukas & das Onlineabstimmungs-Team
 
 -- 
 Diese Mail wurde für Mitglied #{{ user.member_id }} der Jungen Piraten generiert.
