@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-12 12:53+0100\n"
+"PO-Revision-Date: 2013-03-12 12:58+0100\n"
+"Last-Translator: Lukas Martini <hello@lutoma.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: templates/base.html:10
+msgid "Poll"
+msgstr "Abstimmung"
+
+#: templates/base.html:44
+msgid "No content to show"
+msgstr "Kein Inhalt anzuzeigen"
+
+#: vote/models.py:14
+msgid "Created at"
+msgstr "Angelegt am"
+
+#: vote/models.py:17
+msgid "Active"
+msgstr "Aktiv"
+
+#: vote/models.py:33 vote/models.py:71
+msgid "Corresponding poll"
+msgstr "Zugehörige Abstimmung"
+
+#: vote/models.py:34
+msgid "Token used?"
+msgstr "Token benutzt?"
+
+#: vote/models.py:35
+msgid "Mail sent?"
+msgstr "Mail verschickt?"
+
+#: vote/models.py:39
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: vote/models.py:43
+msgid "First name"
+msgstr "Vorname"
+
+#: vote/models.py:45
+msgid "Member ID"
+msgstr "Mitgliedsnummer"
+
+#: vote/models.py:53
+msgid "Auth token"
+msgstr "Authentifizierungstoken"
+
+#: vote/models.py:58
+msgid "Login IP"
+msgstr "Login-IP"
+
+#: vote/models.py:116
+msgid "Voting user"
+msgstr "Abstimmender Nutzer"
+
+#: vote/models.py:120
+msgid "Answered question"
+msgstr "Beantwortete Frage"
+
+#: vote/models.py:123
+msgid "Yes"
+msgstr "Ja"
+
+#: vote/models.py:123
+msgid "No"
+msgstr "Nein"
+
+#: vote/models.py:123
+msgid "Abstention"
+msgstr "Enthaltung"
+
+#: vote/models.py:124
+msgid "Choice"
+msgstr "Auswahl"
+
+#: vote/management/commands/vpanelimport.py:25
+#: votemail/management/commands/sendtokenmails.py:24
+msgid "Usage: {}"
+msgstr "Benutzung: {}"
+
+#: vote/management/commands/vpanelimport.py:31
+#: votemail/management/commands/sendtokenmails.py:30
+msgid "Poll #{} does not exist"
+msgstr "Abstimmung #{} existiert nicht"
+
+#: vote/management/commands/vpanelimport.py:41
+msgid "Invalid CSV file. Please see Readme."
+msgstr "Ungültige CSV-Datei. Bitte schaue ins Readme."
+
+#: vote/management/commands/vpanelimport.py:51
+msgid "Imported user #{}"
+msgstr "Habe Nutzer #{} importiert."
+
+#: votemail/tasks.py:20
+msgid "Your voting token for the \"{}\" poll"
+msgstr "[Junge Piraten] Du kannst jetzt in der {} abstimmen!"
