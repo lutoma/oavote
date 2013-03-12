@@ -124,7 +124,7 @@ class Vote(models.Model):
 		verbose_name = _('Choice'))
 
 	def __unicode__(self):
-		return '{} by #{} on {}'.format(
+		return u'{} by #{} on {}'.format(
 			self.get_choice_display(),
 			self.voting_user.member_id,
 			self.poll_question)
