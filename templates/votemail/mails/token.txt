@@ -10,7 +10,7 @@ Teile diese URL niemand mit – Wer diese hat, kann sich als Du ausgeben und dei
 Falls du Fragen hast oder du dir nicht sicher bist wie du deine Stimme abgeben kannst, wende ich an kontakt@junge-piraten.de.
 
 Viele Grüße,
-Lukas & das Onlineabstimmungs-Team
+Lukas & das Mitgliederabstimmungs-Team
 
 -- 
 Diese Mail wurde für Mitglied #{{ user.member_id }} der Jungen Piraten generiert.
