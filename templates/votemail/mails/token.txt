@@ -3,7 +3,7 @@ Hallo {{ user.first_name }},
 wir melden uns bei dir, weil du ab sofort über die Anträge der {{ user.poll.title }} abstimmen kannst!
 
 Du kannst deine Stimmen unter folgendem Link abgeben:
-https://oa.junge-piraten.de/vote/ident/{{ user.token }}/
+https://ma.junge-piraten.de/vote/ident/{{ user.token }}/
 
 Teile diese URL niemand mit – Wer diese hat, kann sich als Du ausgeben und deine Stimmen manipulieren.
 
