@@ -17,10 +17,10 @@ def send_token_mails(users):
 		# Format mail and store it
 		mail_template = get_template('votemail/mails/token.txt')
 		message = mail_template.render(Context({'user': user}))
-		subject = _(u'Your voting token for the "{}" poll').format(user.poll.title)
+		subject = u'[Junge Piraten] Dein Abstimmungstoken für die {}'.format(user.poll.title)
 		mail_to = (u'{} <{}>'.format(user.first_name, user.email_address),)
 
-		mails.append((subject, message, None, mail_to))
+		mails.append((subject, message, '"Junge Piraten e.V." <kontakt@junge-piraten.de>', mail_to))
 
 	print('Sending mails')
 	send_mass_mail(mails, fail_silently = False)
