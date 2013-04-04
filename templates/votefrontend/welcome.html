@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
+{% block header_title %}
+	Willkommen
+{% endblock %}
+
 {% block content %}
 	<h1>Willkommen, {{ token_user.first_name }}</h1>
 
-	<p>Hallo im Abstimmungssystem der Jungen Piraten! Wenn Du zum ersten mal hier bist, solltest Du dir ein paar Sekunden Zeit nehmen, die folgenden Informationen durchzulesen. Ansonsten kannst du einfach fortfahren.</p>
+	<p>Hallo im Abstimmungssystem der Jungen Piraten!</p>
 
-	<h2>Wichtiger Punkt</h2>
-
-	<p>Northern Equestria's <a href="">Crystal Empire</a> has once again made an appearance after being afflicted with a curse that made it vanish for 1,000 years, and Princess Celestia commissions Twilight Sparkle to keep the empire from disappearing again.</p>
-
-	<hr />
-
-	<p>Twilight Sparkle accidentally casts a spell that switches the Cutie Marks and destinies of all her friends, and the only way she can reverse the spell is by writing her own magic.  Little does she know that by achieving this great accomplishment, she will fulfill her destiny and emerge a princess.</p>
+	<p>Basisdemokratie. Das ist ein Wort, mit dem wir oft für uns werben, obwohl es weder in Satzung noch Leitbild auftaucht. Und doch ist es selbstverständlich für uns, dass der Vorstand nicht die politische Ausrichtung der Jungen Piraten bestimmt. Mitglieder zu beteiligen war immer ein wichtiger Punkt für uns. Mit der auf der BMV in Hamburg verabschiedeten Abstimmungsordnung heben wir die Mitgliederbeteiligung auf ein neues Level: Es ist von nun an immer möglich, sich als Mitglied einzubringen und über die politischen Richtungsentscheidungen der Jungen Piraten verbindlich mitzubestimmen – auch außerhalb der regulären Mitgliederversammlungen.</p>
+	<p>Dies ist die erste Mitgliederabstimmung und damit für uns alle Neuland. Es wurden einige Anträge eingereicht, es wurde diskutiert und nun kommt die entscheidende Phase: Es wird abgestimmt. Das Ganze ist ein Experiment. Während die Piratenpartei noch darüber diskutiert, welchen Weg sie gehen möchte, probieren wir einen davon aus. Wir hoffen, es gelingt. </p>
+	<p>Du wirst nun einen Antrag nach dem anderen abstimmen können. Beachte dabei: Einige Anträge sind inhaltlich konkurierend (wir haben diese entsprechend gekennzeichnet). Allerdings können gemäß der Abstimmungsordnung alle angenommen werden. Das würde zwar zu einem nicht gerade sinnvollen Ergebnis führen, ist aber so. Daher die bitte an dich: Stimm so ab, dass dein Abstimmungsverhalten Sinn macht. Und nun wünschen wir viel Spaß beim Mitgestalten!</p>
 
 	<a href='{% url "show_question" question_id=question.id %}' class='button pull-right'>Weiter</a>
 {% endblock %}
