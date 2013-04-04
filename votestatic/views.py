@@ -18,3 +18,14 @@ def index(request):
 		context_instance = RequestContext(request, {}))
 
 	return response
+
+@require_safe
+def info(request):
+	"""
+	Info page
+	"""
+
+	response = render_to_response('votestatic/info.html',
+		context_instance = RequestContext(request, {}))
+
+	return response
