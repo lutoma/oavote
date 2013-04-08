@@ -106,6 +106,17 @@ class PollQuestion(models.Model):
 
 		return list[0]
 
+	def get_result(self):
+		"""
+		Returns a tuple of yes/no/abstention votes on this question.
+		"""
+
+		yes = Vote.objects.filter(poll_question = self, choice = 0).count()
+		no = Vote.objects.filter(poll_question = self, choice = 1).count()
+		abst = Vote.objects.filter(poll_question = self, choice = 2).count()
+
+		return (yes, no, abst)
+
 class Vote(models.Model):
 	"""
 	The user votes to a question. The choice is stored as an Integerfield. The
