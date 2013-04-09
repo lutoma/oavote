@@ -38,7 +38,7 @@
   						show: true,
 						labelFormatter: function(label, series) {
 							console.log(series.data);
-							return label + ': ' + series.data[0][1];
+							return label + ': ' + Math.round(series.percent) + '%';
 						}
   					}
   				};
