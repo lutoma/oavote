@@ -17,6 +17,7 @@ def poll_result(request, poll_id):
 		raise PermissionDenied
 
 	questions = PollQuestion.objects.filter(poll = poll)
+	questions = questions.order_by('id')
 	votes = Vote.objects.filter(poll_question__poll = poll)
 	users = User.objects.filter(poll = poll)
 
