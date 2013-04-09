@@ -55,6 +55,10 @@
 		height: 150px;
 		margin-bottom: 40px;
 	}
+
+	.vote-details {
+		font-size: 0.75em;
+	}
 	</style>
 {% endblock %}
 
@@ -80,7 +84,7 @@
 				<strong>abgelehnt</strong>.
 			{% endif %}
 		</p>
-		<p>
+		<p class='vote-details'>
 			{% for vote in question.vote_set.all %}
 				&lt;#{{ vote.voting_user.member_id }}: {{ vote.get_choice_display }}&gt; 
 			{% endfor %}
