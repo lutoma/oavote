@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block header_title %}
+	Abstimmungsergebnisse {{ poll.title }}
+{% endblock %}
+
+{% block header_add %}
+	<!--[if lte IE 8]>
+		<script src="{% static 'js/excanvas.min.js' %}"></script>
+	<![endif]-->
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery.flot.min.js' %}"></script>
+	<script src="{% static 'js/jquery.flot.pie.min.js' %}"></script>
+
+	<script>
+		function labelFormatter() {
+			return 'ohai';
+		}
+
+		$(document).ready(function() {
+
+			$('.plot-pie').each(function(i, plot) {
+
+				var data = [ {label: "Dafür", data: $(plot).data('yes')}, {label: "Dagegen", data: $(plot).data('no')}, {label: "Enthaltung", data: $(plot).data('abst')}];
+
+				var options = {
+					series: {
+						pie: {
+							show: true,
+
+						}
+  					},
+
+  					legend: {
+  						show: true,
+						labelFormatter: function(label, series) {
+							console.log(series.data);
+							return label + ': ' + series.data[0][1];
+						}
+  					}
+  				};
+
+				$.plot(plot, data, options); 
+
+			})
+		})
+	</script>
+
+	<style>
+	.plot-pie {
+		width: 350px;
+		height: 150px;
+		margin-bottom: 40px;
+	}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<h1>Abstimmungsergebnisse {{ poll.title }}</h1>
+
+	<p>
+		Stimmberechtigte Personen: {{ users.count }}<br />
+		Abgegebene Stimmen: {{ votes.count }}
+	</p>
+
+	<hr />
+
+	{% for question in questions %}
+		<h2>{{ question.title }}</h2>
+		<div class='plot plot-pie' id='plot-pie-{{ question.id }}' data-yes='{{ question.get_result.0 }}' data-no='{{ question.get_result.1 }}' data-abst='{{ question.get_result.2 }}'></div>
+
+		<p>Dieser Antrag wurde mit {{ question.get_result.0 }} Ja-Stimmen, {{ question.get_result.1 }} Nein-Stimmen und {{ question.get_result.2 }} aktiven Enthaltungen
+			{% if question.get_result.0 > question.get_result.1 %}
+				<strong>angenommen</strong>.
+			{% endif %}
+			{% if question.get_result.1 >= question.get_result.0 %}
+				<strong>abgelehnt</strong>.
+			{% endif %}
+		</p>
+		<p>
+			{% for vote in question.vote_set.all %}
+				&lt;#{{ vote.voting_user.member_id }}: {{ vote.get_choice_display }}&gt; 
+			{% endfor %}
+		</p>
+	{% endfor %}
+{% endblock %}

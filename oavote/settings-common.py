@@ -32,7 +32,8 @@ INSTALLED_APPS = (
 	'vote',
 	'votemail',
 	'votefrontend',
-	'votestatic'
+	'votestatic',
+	'voteresults'
 )
 
 MIDDLEWARE_CLASSES = (
