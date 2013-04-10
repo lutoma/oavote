@@ -25,6 +25,10 @@ def check_ident(function):
 		if not function.__globals__['user'].token == token:
 			raise PermissionDenied
 
+		# FIXME Should redirect to page that explains that this poll is now over
+		if not user.poll.active:
+			raise PermissionDenied
+
 		return function(*args, **keyword_args)
 
 	wrapper.__doc__= function.__doc__
