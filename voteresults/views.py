@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
 from vote.models import Poll, PollQuestion, Vote, User
 from django.views.decorators.http import require_POST, require_safe
+from django.core.cache import cache
 
 def poll_result(request, poll_id):
 	"""
@@ -16,10 +17,28 @@ def poll_result(request, poll_id):
 	if poll.active and not request.user.is_superuser:
 		raise PermissionDenied
 
-	questions = PollQuestion.objects.filter(poll = poll)
-	votes = Vote.objects.filter(poll_question__poll = poll)
-	users = User.objects.filter(poll = poll)
+	# FIXME Prettify the caching stuff
 
+	cache_keys = [
+		'poll-result-{}-questions'.format(poll.id),
+		'poll-result-{}-votes'.format(poll.id),
+		'poll-result-{}-users'.format(poll.id),
+	]
+
+	questions = cache.get(cache_keys[0])
+	if not questions or not poll.active:
+		questions = PollQuestion.objects.filter(poll = poll)
+		cache.set(cache_keys[0], questions, 157784630)
+
+	votes = cache.get(cache_keys[1])
+	if not votes or not poll.active:
+		votes = Vote.objects.filter(poll_question__poll = poll)
+		cache.set(cache_keys[1], votes, 157784630)
+
+	users = cache.get(cache_keys[2])
+	if not users or not poll.active:
+		users = User.objects.filter(poll = poll)
+		cache.set(cache_keys[2], users, 157784630)
 
 	# Distinct with field names is only supported by Postgres
 	try:
