@@ -26,7 +26,7 @@ DATABASES = {
 
 MEDIA_ROOT = '/tmp/oavote-asset/'
 MEDIA_URL = '/asset/'
-STATIC_ROOT = '/tmp/oavote-static/'
+STATIC_ROOT = '/var/www/ma/www/static/'
 STATIC_URL = '/static/'
 
 with file('/etc/oavote-secret') as key_file:
