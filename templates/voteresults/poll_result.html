@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
+
 {% load staticfiles %}
+{% load humanize %}
 
-
-{% block header_title %}
-	Ergebnisse {{ poll.title }}
-{% endblock %}
+{% block header_title %}Ergebnisse {{ poll.title }}{% endblock %}
 
 {% block header_add %}
+	<meta name="description" content="Die Ergebnisse der {{ poll.title }} mit den Anträgen {% for question in questions %}{{ question.title }}, {% endfor %}" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@jungePiraten" />
+	<meta name="twitter:title" content="Ergebnisse {{ poll.title }}" />
+	<meta name="twitter:description" content="Die Ergebnisse der {{ poll.title }} mit den Anträgen {% for question in questions %}{{ question.title }}, {% endfor %}" />
+
+	<link rel='stylesheet' href='{% static "css/poll_result.css" %}' />
+
+
 	<!--[if lte IE 8]>
 		<script src="{% static 'js/excanvas.min.js' %}"></script>
 	<![endif]-->
@@ -14,87 +23,52 @@
 	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<script src="{% static 'js/jquery.flot.min.js' %}"></script>
 	<script src="{% static 'js/jquery.flot.pie.min.js' %}"></script>
-
-	<script>
-		function labelFormatter() {
-			return 'ohai';
-		}
-
-		$(document).ready(function() {
-
-			$('.plot-pie').each(function(i, plot) {
-
-				var data = [ {label: "Dafür", data: $(plot).data('yes'), color: '#EDC240'}, {label: "Dagegen", data: $(plot).data('no'), color: '#CB4B4B'}, {label: "Enthaltung", data: $(plot).data('abst'), color: '#AFD8F8'}];
-
-				var options = {
-					series: {
-						pie: {
-							show: true,
-
-						}
-  					},
-
-  					legend: {
-  						show: true,
-						labelFormatter: function(label, series) {
-							console.log(series.data);
-							return label + ': ' + Math.round(series.percent) + '%';
-						}
-  					}
-  				};
-
-				$.plot(plot, data, options); 
-
-			})
-		})
-	</script>
-
-	<style>
-	.plot-pie {
-		width: 350px;
-		height: 150px;
-		margin-bottom: 40px;
-	}
-
-	.vote-details {
-		font-size: 0.85em;
-		display: none;
-	}
-
-	a {
-		cursor: pointer;
-	}
-	</style>
+	<script src="{% static 'js/poll_result.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 	<h1>Ergebnisse {{ poll.title }}</h1>
 
 	<p>
-		Stimmberechtigte Personen: {{ users.count }}<br />
-		Abgegebene Stimmen: {{ votes.count }}
+		Stimmberechtigte Personen: {{ users.count|intcomma }}<br />
+		Abstimmende Personen: {{ votingusers|intcomma }}<br />
+		Wahlbeteiligung: {{ votingpercentage }}% 
+	</p>
+
+	<p>
+		Maximal mögliche Stimmen: {{ maxvotes|intcomma }}<br />
+		Abgegebene Stimmen: {{ votes.count|intcomma }}
 	</p>
 
 	<hr />
 
 	{% for question in questions %}
-		<h2>{{ question.title }}</h2>
-		<div class='plot plot-pie' id='plot-pie-{{ question.id }}' data-yes='{{ question.get_result.0 }}' data-no='{{ question.get_result.1 }}' data-abst='{{ question.get_result.2 }}'></div>
+		<article>
+			<h1 id='{{ question.title|slugify }}'>{{ question.title }}</h1>
+			<div class="author">Antragsteller*innen: {{ question.authors }}</div>
 
-		<p>Dieser Antrag wurde mit {{ question.get_result.0 }} Ja-Stimmen, {{ question.get_result.1 }} Nein-Stimmen und {{ question.get_result.2 }} aktiven Enthaltungen
-			{% if question.get_result.0 > question.get_result.1 %}
-				<strong>angenommen</strong>.
-			{% endif %}
-			{% if question.get_result.1 >= question.get_result.0 %}
-				<strong>abgelehnt</strong>.
-			{% endif %}
-		</p>
+			<figure class='plot plot-pie' id='plot-pie-{{ question.id }}' data-yes='{{ question.get_result.0 }}' data-no='{{ question.get_result.1 }}' data-abst='{{ question.get_result.2 }}'></figure>
 
-		<a onclick='$("#vote-details-{{ question.id }}").toggle()'>» Details</a>
-		<p class='vote-details' id='vote-details-{{ question.id }}'>
-			{% for vote in question.vote_set.all %}
-				#{{ vote.voting_user.member_id }}: {{ vote.get_choice_display }}<br />
-			{% endfor %}
-		</p>
+			<p>Dieser Antrag wurde mit {{ question.get_result.0 }} Ja-Stimmen, {{ question.get_result.1 }} Nein-Stimmen und {{ question.get_result.2 }} aktiven Enthaltungen
+				{% if question.get_result.0 > question.get_result.1 %}
+					<strong>angenommen</strong>.
+				{% endif %}
+				{% if question.get_result.1 >= question.get_result.0 %}
+					<strong>abgelehnt</strong>.
+				{% endif %}
+			</p>
+
+			<a onclick='$("#vote-text-{{ question.id }}").toggle()'>» Antragstext</a> <br />
+			<div class='vote-text' id='vote-text-{{ question.id }}'>
+				{{ question.text|safe|linebreaks }}
+			</div>
+
+			<a onclick='$("#vote-details-{{ question.id }}").toggle()'>» Details</a>
+			<p class='vote-details' id='vote-details-{{ question.id }}'>
+				{% for vote in question.vote_set.all %}
+					#{{ vote.voting_user.member_id }}: {{ vote.get_choice_display }}<br />
+				{% endfor %}
+			</p>
+		</article>
 	{% endfor %}
 {% endblock %}

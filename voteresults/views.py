@@ -17,11 +17,34 @@ def poll_result(request, poll_id):
 		raise PermissionDenied
 
 	questions = PollQuestion.objects.filter(poll = poll)
-	questions = questions.order_by('id')
 	votes = Vote.objects.filter(poll_question__poll = poll)
 	users = User.objects.filter(poll = poll)
 
-	context = {'questions': questions, 'poll': poll, 'votes': votes, 'users': users}
+
+	# Distinct with field names is only supported by Postgres
+	try:
+		votingusers = votes.distinct('voting_user').count()
+	except NotImplementedError:
+		# Emulate DISCTINCT ON function of Postgres by writing in a dictionary
+		# with the user as the key, thus only overwriting if a user voted
+		# multiple times instead of getting duplicates
+		temp_users = {}
+
+		for vote in votes:
+			temp_users[vote.voting_user] = True
+
+		votingusers = len(temp_users)
+		del temp_users
+
+	context = {
+		'questions': questions.order_by('id'),
+		'poll': poll,
+		'votes': votes,
+		'users': users,
+		'maxvotes': users.count() * questions.count(),
+		'votingusers': votingusers,
+		'votingpercentage': round(float(votingusers) / float(users.count()) * 100, 2),
+	}
 
 	return render_to_response('voteresults/poll_result.html',
 		context_instance = RequestContext(request, context))
