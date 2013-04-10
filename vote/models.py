@@ -117,6 +117,10 @@ class PollQuestion(models.Model):
 
 		return (yes, no, abst)
 
+	def is_accepted(self):
+		return (Vote.objects.filter(poll_question = self, choice = 0).count() >
+			Vote.objects.filter(poll_question = self, choice = 1).count())
+
 class Vote(models.Model):
 	"""
 	The user votes to a question. The choice is stored as an Integerfield. The

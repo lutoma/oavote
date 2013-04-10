@@ -50,10 +50,9 @@
 			<figure class='plot plot-pie' id='plot-pie-{{ question.id }}' data-yes='{{ question.get_result.0 }}' data-no='{{ question.get_result.1 }}' data-abst='{{ question.get_result.2 }}'></figure>
 
 			<p>Dieser Antrag wurde mit {{ question.get_result.0 }} Ja-Stimmen, {{ question.get_result.1 }} Nein-Stimmen und {{ question.get_result.2 }} aktiven Enthaltungen
-				{% if question.get_result.0 > question.get_result.1 %}
+				{% if question.is_accepted %}
 					<strong>angenommen</strong>.
-				{% endif %}
-				{% if question.get_result.1 >= question.get_result.0 %}
+				{% else %}
 					<strong>abgelehnt</strong>.
 				{% endif %}
 			</p>
