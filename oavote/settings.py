@@ -31,3 +31,10 @@ STATIC_ROOT = '/tmp/oavote-static/'
 STATIC_URL = '/static/'
 SECRET_KEY = ')%39c_8s*r)&amp;gmxa%nrpvc9-w_=azvyt)%27a^c%t*13ob1%=!'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CACHES = {
+	'default': {
+		'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+		'LOCATION': 'oavote'
+	}
+}
